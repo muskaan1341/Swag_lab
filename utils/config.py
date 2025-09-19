@@ -12,4 +12,9 @@ problem_user = "problem_user"
 performance_glitch_user = "performance_glitch_user"
 error_user = "error_user"
 visual_user = "visual_user"
-#locked --- IGNORE ---
+
+
+# sample test user details to use in checkout form
+test_first_name = "Muskaan"
+test_last_name = "QA"
+test_postal_code = "12345"
