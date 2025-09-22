@@ -1,5 +1,3 @@
-# Test: Add to Cart
-# ...test implementation goes here...
 import pytest
 from utils import config, driver_factory
 from pages.login_page import LoginPage
