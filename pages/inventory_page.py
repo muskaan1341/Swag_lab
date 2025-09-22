@@ -11,3 +11,8 @@ class InventoryPage:
 
     def go_to_cart(self):
         self.driver.find_element(*self.cart_icon).click()
+
+    def logout(self):
+        from pages.home_page import HomePage  # Import here to avoid circular dependency
+        home_page = HomePage(self.driver)
+        home_page.logout()
