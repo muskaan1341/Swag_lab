@@ -17,6 +17,10 @@ class CheckoutPage:
         self.driver.find_element(*self.last_name).send_keys(lname)
         self.driver.find_element(*self.postal_code).send_keys(postal)
         self.driver.find_element(*self.continue_btn).click()
+        # Wait for the Finish button to be present after clicking Continue
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.finish_btn)
+        )
 
     def finish_order(self):
         # Wait for Finish button before clicking
