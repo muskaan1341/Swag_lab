@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 selenium.common.exceptions.TimeoutException
 
 
-
+# ---------- Scenario 1: Logout from inventory page ----------
 def test_logout(setup):
     driver, login = setup
 
@@ -35,12 +35,6 @@ def test_back_button_after_logout(setup):
     inventory.logout()
 
     driver.back()
-    # assert "login" in driver.current_url or "saucedemo.com" in driver.current_url
-    # # Wait for the login button to be present and displayed
-    # login_btn = WebDriverWait(driver, 10).until(
-    #     EC.visibility_of_element_located(login.login_btn)
-    # )
-    # assert login_btn.is_displayed()
 
 # ---------- Scenario 3: Logout from Cart Page ----------
 def test_logout_from_cart_page(setup):

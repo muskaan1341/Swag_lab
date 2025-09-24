@@ -1,6 +1,10 @@
+pip install -r requirements.txt
+
 # Swag Lab Automation
 
-This project automates end-to-end testing for the Swag Labs web application using Selenium, Pytest, and the Page Object Model (POM) design pattern.
+This project provides automated end-to-end testing for the Swag Labs web application using Selenium WebDriver, Pytest, and the Page Object Model (POM) design pattern.
+
+The framework is built for maintainability and scalability, ensuring test logic is clearly separated from page interactions. This makes the suite easy to extend, debug, and manage over time.
 
 ## Project Structure
 
@@ -14,7 +18,7 @@ Swag_lab/
 │   ├── inventory_page.py
 │   └── login_page.py
 │
-├── tests/                # Test cases for different scenarios
+├── tests/                # Automated test cases
 │   ├── test_add_to_cart.py
 │   ├── test_checkout.py
 │   ├── test_login.py
@@ -24,51 +28,77 @@ Swag_lab/
 │   ├── config.py
 │   └── driver_factory.py
 │
-├── reports/              # Test execution reports (HTML)
+├── reports/              # HTML reports from test execution
 │
-├── conftest.py           # Pytest fixtures
-├── requirements.txt      # Python dependencies
-└── README.md             # Project documentation
+├── conftest.py           # Shared pytest fixtures
+├── requirements.txt      # Project dependencies
+└── README.md             # Documentation
 ```
 
 ## Setup
 
-1. **Clone the repository**
-	```
-	git clone <your-repo-url>
-	cd Swag_lab
-	```
+1. Clone the repository:
 
-2. **Install dependencies**
-	```
-	pip install -r requirements.txt
-	```
+2. Install required dependencies:
 
-3. **Configure settings**
-	- Edit `utils/config.py` to set your base URL and credentials.
+```bash
+pip install -r requirements.txt
+```
 
 ## Running Tests
 
-- To run all tests:
-  ```
-  pytest
-  ```
+Run the full test suite:
 
-- To generate an HTML report:
-  ```
-  pytest --html=reports/report.html
-  ```
+```bash
+pytest
+```
 
-## How It Works
+Run tests with an HTML report:
 
-- **Page Objects:** Each page class in `pages/` encapsulates locators and actions for a specific page.
-- **Tests:** Each test in `tests/` uses these page objects to perform actions and assertions.
-- **Fixtures:** `conftest.py` and test files use fixtures for browser setup and teardown.
+```bash
+pytest --html=reports/report.html
+```
 
-## Contributing
+Run a specific test file with an HTML report:
 
-1. Fork the repo
-2. Create your feature branch (`git checkout -b feature/YourFeature`)
-3. Commit your changes
-4. Push to the branch
-5. Open a pull request
+```bash
+pytest tests/<filename>.py --html=reports/report.html
+```
+
+## Framework Overview
+
+- **Page Objects:** Each class in `pages/` contains element locators and reusable methods for a single page.
+- **Tests:** Located in `tests/`, these files use page objects to perform actions and validate outcomes.
+- **Fixtures:** Defined in `conftest.py`, they handle browser setup and teardown.
+
+## Test Coverage
+
+The suite covers the following scenarios:
+
+### 1. Login
+	- Valid and invalid credentials
+	- Locked-out user
+	- Problem user
+	- Performance glitch user
+	- Empty fields (username, password, both)
+	- Special characters in credentials
+	- Case sensitivity checks
+	- Visual user
+
+### 2. Add to Cart
+	- Add one item
+	- Add multiple items
+	- Remove one item
+	- Remove multiple items
+
+### 3. Checkout
+	- Valid information
+	- Invalid information
+	- Partially empty fields
+	- All fields empty
+
+### 4. Logout
+	- From homepage
+	- From cart page
+	- From checkout page
+	- Session cleared after logout (back button check)

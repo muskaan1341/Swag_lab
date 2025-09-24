@@ -5,8 +5,8 @@ from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 selenium.common.exceptions.TimeoutException
 
-
-def test_checkout(setup):
+# ---------- Scenario 1: checkout with valid credentials----------
+def test_checkout_valid(setup):
     driver, login = setup
 
     # Step 1: Login
@@ -29,3 +29,7 @@ def test_checkout(setup):
     # Step 5: Verify order success
     success_text = checkout.get_success_message()
     assert "THANK YOU FOR YOUR ORDER" in success_text.upper()
+
+# ---------- Scenario 2: checkout with invalid information----------
+# ---------- Scenario 3: Partially empty fields ----------
+# ---------- Scenario 4: All empty fields ----------

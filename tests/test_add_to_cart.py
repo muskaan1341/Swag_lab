@@ -13,6 +13,7 @@ def setup():
     yield driver
     driver.quit()
 
+# ---------- Scenario 1: Add one item to cart----------
 def test_add_to_cart(setup):
     """Add single item to cart"""
     driver = setup
@@ -20,6 +21,7 @@ def test_add_to_cart(setup):
     inventory.add_to_cart()
     assert inventory.get_cart_count() == 1
 
+# ---------- Scenario 2: Add multiple items to cart----------
 def test_add_multiple_to_cart(setup):
     """Add multiple items to cart"""
     driver = setup
@@ -32,6 +34,7 @@ def test_add_multiple_to_cart(setup):
     inventory.add_multiple_items(item_ids)
     assert inventory.get_cart_count() == len(item_ids)
 
+# ---------- Scenario 3: Remove one item from cart----------
 def test_remove_from_cart(setup):
     """Remove single item from cart"""
     driver = setup
@@ -41,6 +44,7 @@ def test_remove_from_cart(setup):
     inventory.remove_item_from_cart("remove-sauce-labs-backpack")
     assert inventory.get_cart_count() == 0
 
+# ---------- Scenario 4: Remove multiple items from cart----------
 def test_remove_multiple_from_cart(setup):
     """Remove multiple items from cart"""
     driver = setup
