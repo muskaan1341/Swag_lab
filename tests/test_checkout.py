@@ -1,7 +1,10 @@
+import selenium
 from utils import config
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
+selenium.common.exceptions.TimeoutException
+
 
 def test_checkout(setup):
     driver, login = setup
