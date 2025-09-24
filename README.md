@@ -4,6 +4,11 @@ This project provides automated end-to-end testing for the Swag Labs web applica
 
 The framework is built for maintainability and scalability, ensuring test logic is clearly separated from page interactions. This makes the suite easy to extend, debug, and manage over time.
 
+## How it is helpful
+pytest allows you to run the entire test suite at once and also generate an HTML report, which provides a clear view of all executed scripts in a single place.
+
+It is especially useful when you want to run the suite in one go—for example, as part of morning smoke testing, sanity testing, or even regression testing. You just need to separate the scenarios based on the testing type (smoke, sanity, or regression).
+
 ## Project Structure
 
 ```
@@ -16,7 +21,7 @@ Swag_lab/
 │   ├── inventory_page.py
 │   └── login_page.py
 │
-├── tests/                # Automated test cases
+├── tests/                # Automated test cases (scripts)
 │   ├── test_add_to_cart.py
 │   ├── test_checkout.py
 │   ├── test_login.py
@@ -35,13 +40,17 @@ Swag_lab/
 
 ## Setup
 
+
 1. Clone the repository:
+	```bash
+	git clone <your-repo-url>
+	cd Swag_lab
+	```
 
 2. Install required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
+	```bash
+	pip install -r requirements.txt
+	```
 
 ## Running Tests
 
@@ -70,6 +79,7 @@ pytest tests/<filename>.py --html=reports/report.html
 - **Fixtures:** Defined in `conftest.py`, they handle browser setup and teardown.
 
 ## Test Coverage
+
 
 The suite covers the following scenarios:
 
@@ -102,6 +112,4 @@ The suite covers the following scenarios:
 	- Session cleared after logout (back button check)
 
 
-pytest allows you to run the entire test suite at once and also generate an HTML report, which provides a clear view of all executed scripts in a single place.
 
-It is especially useful when you want to run the suite in one go—for example, as part of morning smoke testing, sanity testing, or even regression testing. You just need to separate the scenarios based on the testing type (smoke, sanity, or regression).
