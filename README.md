@@ -1,5 +1,3 @@
-pip install -r requirements.txt
-
 # Swag Lab Automation
 
 This project provides automated end-to-end testing for the Swag Labs web application using Selenium WebDriver, Pytest, and the Page Object Model (POM) design pattern.
@@ -102,3 +100,8 @@ The suite covers the following scenarios:
 	- From cart page
 	- From checkout page
 	- Session cleared after logout (back button check)
+
+
+pytest allows you to run the entire test suite at once and also generate an HTML report, which provides a clear view of all executed scripts in a single place.
+
+It is especially useful when you want to run the suite in one go—for example, as part of morning smoke testing, sanity testing, or even regression testing. You just need to separate the scenarios based on the testing type (smoke, sanity, or regression).
