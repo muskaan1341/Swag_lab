@@ -20,4 +20,7 @@ class LoginPage:
         self.driver.find_element(*self.login_btn).click()
 
     def get_error(self):
-        return self.driver.find_element(*self.error_msg).text
+        try:
+            return self.driver.find_element(*self.error_msg).text
+        except:
+            return None

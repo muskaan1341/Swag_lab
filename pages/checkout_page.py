@@ -1,3 +1,4 @@
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,14 +12,18 @@ class CheckoutPage:
         self.continue_btn = (By.ID, "continue")
         self.finish_btn = (By.ID, "finish")
         self.success_msg = (By.CLASS_NAME, "complete-header")
+        self.error_message = (By.CSS_SELECTOR, "[data-test='error']")
+
 
     def fill_information(self, fname, lname, postal):
-        self.driver.find_element(*self.first_name).send_keys(fname)
+        WebDriverWait(self.driver, 20).until(
+        EC.visibility_of_element_located(self.first_name)
+        ).send_keys(fname)
         self.driver.find_element(*self.last_name).send_keys(lname)
         self.driver.find_element(*self.postal_code).send_keys(postal)
         self.driver.find_element(*self.continue_btn).click()
         # Wait for the Finish button to be present after clicking Continue
-        WebDriverWait(self.driver, 10).until(
+        WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located(self.finish_btn)
         )
 
@@ -30,3 +35,9 @@ class CheckoutPage:
 
     def get_success_message(self):
         return self.driver.find_element(*self.success_msg).text
+    
+    def get_error_message(self):
+        try:
+            return self.driver.find_element(*self.error_message).text
+        except:
+            return None
