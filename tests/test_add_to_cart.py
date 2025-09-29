@@ -1,6 +1,7 @@
 import pytest
 from utils import config, driver_factory
 from pages.login_page import LoginPage
+import allure
 from pages.inventory_page import InventoryPage
 from selenium.webdriver.common.by import By
 
@@ -17,6 +18,11 @@ def setup():
 def test_add_to_cart(setup):
     """Add single item to cart"""
     driver = setup
+    with allure.step("Add backpack to cart"):
+        driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
+    with allure.step("Verify cart badge is 1"):
+        cart_badge = driver.find_element(By.CLASS_NAME, "shopping_cart_badge").text
+        assert cart_badge == "1"
     inventory = InventoryPage(driver)
     inventory.add_to_cart()
     assert inventory.get_cart_count() == 1
