@@ -47,7 +47,7 @@ def test_checkout_partial_empty_filed(setup: tuple[WebDriver, LoginPage]):
     cart.proceed_to_checkout()
 
     checkout = CheckoutPage(driver)
-    checkout.fill_information("","QA","856")
+    checkout.fill_information("","","856")
     error_text = checkout.get_error_message()                                                                                                       
 
     assert "Error: First Name is required" in error_text
