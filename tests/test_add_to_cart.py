@@ -67,4 +67,3 @@ def test_remove_multiple_from_cart(setup):
         "remove-sauce-labs-bike-light"
     ]
     inventory.remove_multiple_items(remove_ids)
-    # assert inventory.get_cart_count() == len(item_ids) - len(remove_ids)

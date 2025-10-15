@@ -31,10 +31,8 @@ class CheckoutPage:
             WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.continue_btn)).click()
         except TimeoutException: 
             self.driver.save_screenshot("checkout_fill_info_timeout.png")
-            # raise AssertionError("Checkout form did not appear or was not interactable.")
-
+          
     def finish_order(self):
-        # Wait for Finish button before clicking
         WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable(self.finish_btn)
         ).click()
